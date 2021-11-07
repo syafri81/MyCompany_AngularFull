@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Session[Global.UserID] != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li style="padding-top:8px">
+            @Html.ActionLink("Hello " + Session[Global.DisplayName] + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        @*<li title="Sign Out" style="padding-top:3px"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-2x"></i> </a></li>*@
+        <li title="Sign Out" style="padding-top:3px"><a href="#" onclick="logOff()"><i class="fa fa-sign-out fa-2x"></i></a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+<script>
+    logOff = function()
+    {
+        $.post("/Home/Logoff", function (data)
+        {
+            window.location.href = "/Account/Login";
+        });
+    }
+</script>

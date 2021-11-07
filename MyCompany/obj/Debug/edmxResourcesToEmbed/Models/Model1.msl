@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyCompanyModelStoreContainer" CdmEntityContainer="MyEntities">
+    <EntitySetMapping Name="tblSupplier">
+      <EntityTypeMapping TypeName="MyCompanyModel.tblSupplier">
+        <MappingFragment StoreEntitySet="tblSupplier">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSupplierContact">
+      <EntityTypeMapping TypeName="MyCompanyModel.tblSupplierContact">
+        <MappingFragment StoreEntitySet="tblSupplierContact">
+          <ScalarProperty Name="Info5" ColumnName="Info5" />
+          <ScalarProperty Name="Info4" ColumnName="Info4" />
+          <ScalarProperty Name="Info3" ColumnName="Info3" />
+          <ScalarProperty Name="Info2" ColumnName="Info2" />
+          <ScalarProperty Name="Info1" ColumnName="Info1" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="IDContact" ColumnName="IDContact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPartner">
+      <EntityTypeMapping TypeName="MyCompanyModel.tblPartner">
+        <MappingFragment StoreEntitySet="tblPartner">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Expend">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_Expend">
+        <MappingFragment StoreEntitySet="View_Expend">
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_UserAssignCampaign">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_UserAssignCampaign">
+        <MappingFragment StoreEntitySet="View_UserAssignCampaign">
+          <ScalarProperty Name="IconPath" ColumnName="IconPath" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_UserAssignMenu">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_UserAssignMenu">
+        <MappingFragment StoreEntitySet="View_UserAssignMenu">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RouterLink" ColumnName="RouterLink" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_PurchaseDetail">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_PurchaseDetail">
+        <MappingFragment StoreEntitySet="View_PurchaseDetail">
+          <ScalarProperty Name="CurrencyAmount" ColumnName="CurrencyAmount" />
+          <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+          <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inPurchaseDetail">
+      <EntityTypeMapping TypeName="MyCompanyModel.inPurchaseDetail">
+        <MappingFragment StoreEntitySet="inPurchaseDetail">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+          <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+          <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUser">
+      <EntityTypeMapping TypeName="MyCompanyModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CustCompanyID" ColumnName="CustCompanyID" />
+          <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+          <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Purchase">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_Purchase">
+        <MappingFragment StoreEntitySet="View_Purchase">
+          <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Partner">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_Partner">
+        <MappingFragment StoreEntitySet="View_Partner">
+          <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inExpend">
+      <EntityTypeMapping TypeName="MyCompanyModel.inExpend">
+        <MappingFragment StoreEntitySet="inExpend">
+          <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inPurchase">
+      <EntityTypeMapping TypeName="MyCompanyModel.inPurchase">
+        <MappingFragment StoreEntitySet="inPurchase">
+          <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Partner" FunctionName="MyCompanyModel.Store.SP_Partner">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyCompanyModel.SP_Partner_Result">
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblProduct">
+      <EntityTypeMapping TypeName="MyCompanyModel.tblProduct">
+        <MappingFragment StoreEntitySet="tblProduct">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inExpendDetail">
+      <EntityTypeMapping TypeName="MyCompanyModel.inExpendDetail">
+        <MappingFragment StoreEntitySet="inExpendDetail">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="SellAmount" ColumnName="SellAmount" />
+          <ScalarProperty Name="BuyAmount" ColumnName="BuyAmount" />
+          <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+          <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+          <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+          <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Product">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_Product">
+        <MappingFragment StoreEntitySet="View_Product">
+          <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Product" FunctionName="MyCompanyModel.Store.SP_Product">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyCompanyModel.SP_Product_Result">
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="View_ExpendDetail">
+      <EntityTypeMapping TypeName="MyCompanyModel.View_ExpendDetail">
+        <MappingFragment StoreEntitySet="View_ExpendDetail">
+          <ScalarProperty Name="BuyAmount" ColumnName="BuyAmount" />
+          <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+          <ScalarProperty Name="StrCreated" ColumnName="StrCreated" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CurrencySellAmount" ColumnName="CurrencySellAmount" />
+          <ScalarProperty Name="CurrencyBuyAmount" ColumnName="CurrencyBuyAmount" />
+          <ScalarProperty Name="CurrencySell" ColumnName="CurrencySell" />
+          <ScalarProperty Name="CurrencyBuy" ColumnName="CurrencyBuy" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+          <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+          <ScalarProperty Name="SellAmount" ColumnName="SellAmount" />
+          <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Expend" FunctionName="MyCompanyModel.Store.SP_Expend">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyCompanyModel.SP_Expend_Result">
+          <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+          <ScalarProperty Name="StrCreated" ColumnName="StrCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Purchase" FunctionName="MyCompanyModel.Store.SP_Purchase">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyCompanyModel.SP_Purchase_Result">
+          <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+          <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+          <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+          <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+          <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+          <ScalarProperty Name="StrCreated" ColumnName="StrCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

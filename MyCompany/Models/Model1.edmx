@@ -1,0 +1,1245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyCompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="inExpend">
+          <Key>
+            <PropertyRef Name="IDExpend" />
+          </Key>
+          <Property Name="IDExpend" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDFaktur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDSupplier" Type="int" Nullable="false" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="IDCustCompany" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="FakturCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inExpendDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+          </Key>
+          <Property Name="IDDetail" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDExpend" Type="bigint" Nullable="false" />
+          <Property Name="IDProduct" Type="int" Nullable="false" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+          <Property Name="BuyPrice" Type="money" Nullable="false" />
+          <Property Name="SellPrice" Type="money" Nullable="false" />
+          <Property Name="BuyAmount" Type="money" Nullable="false" />
+          <Property Name="SellAmount" Type="money" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inPurchase">
+          <Key>
+            <PropertyRef Name="IDPurchase" />
+          </Key>
+          <Property Name="IDPurchase" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDFaktur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDPartner" Type="int" Nullable="false" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="IDCustCompany" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="FakturCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inPurchaseDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+          </Key>
+          <Property Name="IDDetail" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPurchase" Type="bigint" Nullable="false" />
+          <Property Name="IDProduct" Type="int" Nullable="false" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPartner">
+          <Key>
+            <PropertyRef Name="IDPartner" />
+          </Key>
+          <Property Name="IDPartner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="200" />
+          <Property Name="Address2" Type="varchar" MaxLength="200" />
+          <Property Name="Address3" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="IDProduct" />
+          </Key>
+          <Property Name="IDProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSupplier">
+          <Key>
+            <PropertyRef Name="IDSupplier" />
+          </Key>
+          <Property Name="IDSupplier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSupplierContact">
+          <Key>
+            <PropertyRef Name="IDContact" />
+          </Key>
+          <Property Name="IDContact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSupplier" Type="int" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Info1" Type="varchar" MaxLength="100" />
+          <Property Name="Info2" Type="varchar" MaxLength="100" />
+          <Property Name="Info3" Type="varchar" MaxLength="100" />
+          <Property Name="Info4" Type="varchar" MaxLength="100" />
+          <Property Name="Info5" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserLevel" Type="int" Nullable="false" />
+          <Property Name="CampaignID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustCompanyID" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_Expend' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Expend">
+          <Key>
+            <PropertyRef Name="IDExpend" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDSupplier" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="SupplierName" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="Currency" />
+          </Key>
+          <Property Name="IDExpend" Type="bigint" Nullable="false" />
+          <Property Name="IDFaktur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDSupplier" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_ExpendDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_ExpendDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Volume" />
+            <PropertyRef Name="SellPrice" />
+            <PropertyRef Name="SellAmount" />
+            <PropertyRef Name="IDExpend" />
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDSupplier" />
+            <PropertyRef Name="CurrencyBuy" />
+            <PropertyRef Name="CurrencySell" />
+            <PropertyRef Name="CurrencyBuyAmount" />
+            <PropertyRef Name="CurrencySellAmount" />
+            <PropertyRef Name="Created" />
+            <PropertyRef Name="BuyPrice" />
+            <PropertyRef Name="BuyAmount" />
+          </Key>
+          <Property Name="IDDetail" Type="bigint" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="20" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+          <Property Name="SellPrice" Type="money" Nullable="false" />
+          <Property Name="SellAmount" Type="money" Nullable="false" />
+          <Property Name="IDExpend" Type="bigint" Nullable="false" />
+          <Property Name="IDProduct" Type="int" Nullable="false" />
+          <Property Name="IDFaktur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDSupplier" Type="int" Nullable="false" />
+          <Property Name="CurrencyBuy" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CurrencySell" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CurrencyBuyAmount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CurrencySellAmount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="StrCreated" Type="varchar" MaxLength="30" />
+          <Property Name="BuyPrice" Type="money" Nullable="false" />
+          <Property Name="BuyAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_Partner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Partner">
+          <Key>
+            <PropertyRef Name="IDPartner" />
+            <PropertyRef Name="IDNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="SearchName" />
+          </Key>
+          <Property Name="IDPartner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="SearchName" Type="varchar" MaxLength="253" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Product">
+          <Key>
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CampaignName" />
+            <PropertyRef Name="IDCampaign" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="IDProduct" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="20" />
+          <Property Name="CampaignName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="SearchName" Type="varchar" MaxLength="703" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_Purchase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Purchase">
+          <Key>
+            <PropertyRef Name="IDPurchase" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDPartner" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="IDNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="PartnerName" />
+          </Key>
+          <Property Name="IDPurchase" Type="bigint" Nullable="false" />
+          <Property Name="IDFaktur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDPartner" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PartnerName" Type="varchar" MaxLength="306" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_PurchaseDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_PurchaseDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Volume" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="IDPurchase" />
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDPartner" />
+            <PropertyRef Name="CurrencyPrice" />
+            <PropertyRef Name="CurrencyAmount" />
+          </Key>
+          <Property Name="IDDetail" Type="bigint" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="20" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="IDPurchase" Type="bigint" Nullable="false" />
+          <Property Name="IDProduct" Type="int" Nullable="false" />
+          <Property Name="IDFaktur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDPartner" Type="int" Nullable="false" />
+          <Property Name="CurrencyPrice" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CurrencyAmount" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_UserAssignCampaign' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_UserAssignCampaign">
+          <Key>
+            <PropertyRef Name="IDUser" />
+            <PropertyRef Name="IDCampaign" />
+            <PropertyRef Name="CampaignName" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IconPath" />
+          </Key>
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="CampaignName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IconPath" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyCompany.dbo.View_UserAssignMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_UserAssignMenu">
+          <Key>
+            <PropertyRef Name="IDUser" />
+            <PropertyRef Name="IDCampaign" />
+            <PropertyRef Name="IDMenu" />
+            <PropertyRef Name="MenuName" />
+            <PropertyRef Name="RouterLink" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IDCampaign" Type="int" Nullable="false" />
+          <Property Name="IDMenu" Type="int" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RouterLink" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_Expend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CampaignID" Type="int" Mode="In" />
+          <Parameter Name="CustCampaignID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Partner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CampaignID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Purchase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CampaignID" Type="int" Mode="In" />
+          <Parameter Name="CustCampaignID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MyCompanyModelStoreContainer">
+          <EntitySet Name="inExpend" EntityType="Self.inExpend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inExpendDetail" EntityType="Self.inExpendDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inPurchase" EntityType="Self.inPurchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inPurchaseDetail" EntityType="Self.inPurchaseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPartner" EntityType="Self.tblPartner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSupplier" EntityType="Self.tblSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSupplierContact" EntityType="Self.tblSupplierContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Expend" EntityType="Self.View_Expend" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Expend].[IDExpend] AS [IDExpend], 
+    [View_Expend].[IDFaktur] AS [IDFaktur], 
+    [View_Expend].[IDSupplier] AS [IDSupplier], 
+    [View_Expend].[Amount] AS [Amount], 
+    [View_Expend].[SupplierName] AS [SupplierName], 
+    [View_Expend].[PhoneNumber] AS [PhoneNumber], 
+    [View_Expend].[Currency] AS [Currency]
+    FROM [dbo].[View_Expend] AS [View_Expend]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_ExpendDetail" EntityType="Self.View_ExpendDetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_ExpendDetail].[IDDetail] AS [IDDetail], 
+    [View_ExpendDetail].[ProductName] AS [ProductName], 
+    [View_ExpendDetail].[Weight] AS [Weight], 
+    [View_ExpendDetail].[Size] AS [Size], 
+    [View_ExpendDetail].[Volume] AS [Volume], 
+    [View_ExpendDetail].[SellPrice] AS [SellPrice], 
+    [View_ExpendDetail].[SellAmount] AS [SellAmount], 
+    [View_ExpendDetail].[IDExpend] AS [IDExpend], 
+    [View_ExpendDetail].[IDProduct] AS [IDProduct], 
+    [View_ExpendDetail].[IDFaktur] AS [IDFaktur], 
+    [View_ExpendDetail].[IDSupplier] AS [IDSupplier], 
+    [View_ExpendDetail].[CurrencyBuy] AS [CurrencyBuy], 
+    [View_ExpendDetail].[CurrencySell] AS [CurrencySell], 
+    [View_ExpendDetail].[CurrencyBuyAmount] AS [CurrencyBuyAmount], 
+    [View_ExpendDetail].[CurrencySellAmount] AS [CurrencySellAmount], 
+    [View_ExpendDetail].[Created] AS [Created], 
+    [View_ExpendDetail].[StrCreated] AS [StrCreated], 
+    [View_ExpendDetail].[BuyPrice] AS [BuyPrice], 
+    [View_ExpendDetail].[BuyAmount] AS [BuyAmount]
+    FROM [dbo].[View_ExpendDetail] AS [View_ExpendDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Partner" EntityType="Self.View_Partner" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Partner].[IDPartner] AS [IDPartner], 
+    [View_Partner].[IDNumber] AS [IDNumber], 
+    [View_Partner].[Name] AS [Name], 
+    [View_Partner].[PhoneNumber] AS [PhoneNumber], 
+    [View_Partner].[IsActive] AS [IsActive], 
+    [View_Partner].[SearchName] AS [SearchName]
+    FROM [dbo].[View_Partner] AS [View_Partner]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Product" EntityType="Self.View_Product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Product].[IDProduct] AS [IDProduct], 
+    [View_Product].[ProductName] AS [ProductName], 
+    [View_Product].[Weight] AS [Weight], 
+    [View_Product].[Size] AS [Size], 
+    [View_Product].[CampaignName] AS [CampaignName], 
+    [View_Product].[IDCampaign] AS [IDCampaign], 
+    [View_Product].[IsActive] AS [IsActive], 
+    [View_Product].[Description] AS [Description], 
+    [View_Product].[SearchName] AS [SearchName]
+    FROM [dbo].[View_Product] AS [View_Product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Purchase" EntityType="Self.View_Purchase" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Purchase].[IDPurchase] AS [IDPurchase], 
+    [View_Purchase].[IDFaktur] AS [IDFaktur], 
+    [View_Purchase].[IDPartner] AS [IDPartner], 
+    [View_Purchase].[Amount] AS [Amount], 
+    [View_Purchase].[IDNumber] AS [IDNumber], 
+    [View_Purchase].[Name] AS [Name], 
+    [View_Purchase].[PhoneNumber] AS [PhoneNumber], 
+    [View_Purchase].[Currency] AS [Currency], 
+    [View_Purchase].[PartnerName] AS [PartnerName]
+    FROM [dbo].[View_Purchase] AS [View_Purchase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_PurchaseDetail" EntityType="Self.View_PurchaseDetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_PurchaseDetail].[IDDetail] AS [IDDetail], 
+    [View_PurchaseDetail].[ProductName] AS [ProductName], 
+    [View_PurchaseDetail].[Weight] AS [Weight], 
+    [View_PurchaseDetail].[Size] AS [Size], 
+    [View_PurchaseDetail].[Volume] AS [Volume], 
+    [View_PurchaseDetail].[Price] AS [Price], 
+    [View_PurchaseDetail].[Amount] AS [Amount], 
+    [View_PurchaseDetail].[IDPurchase] AS [IDPurchase], 
+    [View_PurchaseDetail].[IDProduct] AS [IDProduct], 
+    [View_PurchaseDetail].[IDFaktur] AS [IDFaktur], 
+    [View_PurchaseDetail].[IDPartner] AS [IDPartner], 
+    [View_PurchaseDetail].[CurrencyPrice] AS [CurrencyPrice], 
+    [View_PurchaseDetail].[CurrencyAmount] AS [CurrencyAmount]
+    FROM [dbo].[View_PurchaseDetail] AS [View_PurchaseDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_UserAssignCampaign" EntityType="Self.View_UserAssignCampaign" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_UserAssignCampaign].[IDUser] AS [IDUser], 
+    [View_UserAssignCampaign].[IDCampaign] AS [IDCampaign], 
+    [View_UserAssignCampaign].[CampaignName] AS [CampaignName], 
+    [View_UserAssignCampaign].[IsActive] AS [IsActive], 
+    [View_UserAssignCampaign].[IconPath] AS [IconPath]
+    FROM [dbo].[View_UserAssignCampaign] AS [View_UserAssignCampaign]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_UserAssignMenu" EntityType="Self.View_UserAssignMenu" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_UserAssignMenu].[IDUser] AS [IDUser], 
+    [View_UserAssignMenu].[IDCampaign] AS [IDCampaign], 
+    [View_UserAssignMenu].[IDMenu] AS [IDMenu], 
+    [View_UserAssignMenu].[MenuName] AS [MenuName], 
+    [View_UserAssignMenu].[RouterLink] AS [RouterLink], 
+    [View_UserAssignMenu].[IsActive] AS [IsActive]
+    FROM [dbo].[View_UserAssignMenu] AS [View_UserAssignMenu]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyCompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblSupplier" EntityType="MyCompanyModel.tblSupplier" />
+          <EntitySet Name="tblSupplierContact" EntityType="MyCompanyModel.tblSupplierContact" />
+          <EntitySet Name="tblPartner" EntityType="MyCompanyModel.tblPartner" />
+          <EntitySet Name="View_Expend" EntityType="MyCompanyModel.View_Expend" />
+          <EntitySet Name="View_UserAssignCampaign" EntityType="MyCompanyModel.View_UserAssignCampaign" />
+          <EntitySet Name="View_UserAssignMenu" EntityType="MyCompanyModel.View_UserAssignMenu" />
+          <EntitySet Name="View_PurchaseDetail" EntityType="MyCompanyModel.View_PurchaseDetail" />
+          <EntitySet Name="inPurchaseDetail" EntityType="MyCompanyModel.inPurchaseDetail" />
+          <EntitySet Name="tblUser" EntityType="MyCompanyModel.tblUser" />
+          <EntitySet Name="View_Purchase" EntityType="MyCompanyModel.View_Purchase" />
+          <EntitySet Name="View_Partner" EntityType="MyCompanyModel.View_Partner" />
+          <EntitySet Name="inExpend" EntityType="MyCompanyModel.inExpend" />
+          <EntitySet Name="inPurchase" EntityType="MyCompanyModel.inPurchase" />
+          <FunctionImport Name="SP_Partner" ReturnType="Collection(MyCompanyModel.SP_Partner_Result)">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblProduct" EntityType="MyCompanyModel.tblProduct" />
+          <EntitySet Name="inExpendDetail" EntityType="MyCompanyModel.inExpendDetail" />
+          <EntitySet Name="View_Product" EntityType="MyCompanyModel.View_Product" />
+          <FunctionImport Name="SP_Product" ReturnType="Collection(MyCompanyModel.SP_Product_Result)">
+          <Parameter Name="CampaignID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="View_ExpendDetail" EntityType="MyCompanyModel.View_ExpendDetail" />
+          <FunctionImport Name="SP_Expend" ReturnType="Collection(MyCompanyModel.SP_Expend_Result)">
+            <Parameter Name="CampaignID" Mode="In" Type="Int32" />
+            <Parameter Name="CustCampaignID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Purchase" ReturnType="Collection(MyCompanyModel.SP_Purchase_Result)">
+            <Parameter Name="CampaignID" Mode="In" Type="Int32" />
+            <Parameter Name="CustCampaignID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="tblSupplier">
+          <Key>
+            <PropertyRef Name="IDSupplier" />
+          </Key>
+          <Property Name="IDSupplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblSupplierContact">
+          <Key>
+            <PropertyRef Name="IDContact" />
+          </Key>
+          <Property Name="IDContact" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSupplier" Type="Int32" Nullable="false" />
+          <Property Name="ContactName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Info1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Info2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Info3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Info4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Info5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblPartner">
+          <Key>
+            <PropertyRef Name="IDPartner" />
+          </Key>
+          <Property Name="IDPartner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_Expend">
+          <Key>
+            <PropertyRef Name="IDExpend" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDSupplier" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="SupplierName" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="Currency" />
+          </Key>
+          <Property Name="IDExpend" Type="Int64" Nullable="false" />
+          <Property Name="IDFaktur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDSupplier" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_UserAssignCampaign">
+          <Key>
+            <PropertyRef Name="IDUser" />
+            <PropertyRef Name="IDCampaign" />
+            <PropertyRef Name="CampaignName" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IconPath" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IconPath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_UserAssignMenu">
+          <Key>
+            <PropertyRef Name="IDUser" />
+            <PropertyRef Name="IDCampaign" />
+            <PropertyRef Name="IDMenu" />
+            <PropertyRef Name="MenuName" />
+            <PropertyRef Name="RouterLink" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="IDMenu" Type="Int32" Nullable="false" />
+          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RouterLink" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_PurchaseDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Volume" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="IDPurchase" />
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDPartner" />
+            <PropertyRef Name="CurrencyPrice" />
+            <PropertyRef Name="CurrencyAmount" />
+          </Key>
+          <Property Name="IDDetail" Type="Int64" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IDPurchase" Type="Int64" Nullable="false" />
+          <Property Name="IDProduct" Type="Int32" Nullable="false" />
+          <Property Name="IDFaktur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPartner" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyPrice" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyAmount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="inPurchaseDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+          </Key>
+          <Property Name="IDDetail" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPurchase" Type="Int64" Nullable="false" />
+          <Property Name="IDProduct" Type="Int32" Nullable="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserLevel" Type="Int32" Nullable="false" />
+          <Property Name="CampaignID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustCompanyID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Purchase">
+          <Key>
+            <PropertyRef Name="IDPurchase" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDPartner" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="IDNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="PartnerName" />
+          </Key>
+          <Property Name="IDPurchase" Type="Int64" Nullable="false" />
+          <Property Name="IDFaktur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPartner" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IDNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PartnerName" Type="String" Nullable="false" MaxLength="306" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_Partner">
+          <Key>
+            <PropertyRef Name="IDPartner" />
+            <PropertyRef Name="IDNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="SearchName" />
+          </Key>
+          <Property Name="IDPartner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="SearchName" Type="String" Nullable="false" MaxLength="253" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="inExpend">
+          <Key>
+            <PropertyRef Name="IDExpend" />
+          </Key>
+          <Property Name="IDExpend" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDFaktur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDSupplier" Type="Int32" Nullable="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="IDCustCompany" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="FakturCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="inPurchase">
+          <Key>
+            <PropertyRef Name="IDPurchase" />
+          </Key>
+          <Property Name="IDPurchase" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDFaktur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPartner" Type="Int32" Nullable="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="IDCustCompany" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="FakturCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="SP_Partner_Result">
+          <Property Type="Int32" Name="IDPartner" Nullable="false" />
+          <Property Type="String" Name="IDNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Address3" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="Modified" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="String" Name="SearchName" Nullable="false" MaxLength="253" />
+        </ComplexType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="IDProduct" />
+          </Key>
+          <Property Name="IDProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="inExpendDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+          </Key>
+          <Property Name="IDDetail" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDExpend" Type="Int64" Nullable="false" />
+          <Property Name="IDProduct" Type="Int32" Nullable="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <Property Name="BuyPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SellPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="BuyAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SellAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Product">
+          <Key>
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CampaignName" />
+            <PropertyRef Name="IDCampaign" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="IDProduct" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CampaignName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDCampaign" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SearchName" Type="String" MaxLength="703" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SP_Product_Result">
+          <Property Type="Int32" Name="IDProduct" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="Weight" Nullable="true" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CampaignName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDCampaign" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SearchName" Nullable="true" MaxLength="703" />
+        </ComplexType>
+        <EntityType Name="View_ExpendDetail">
+          <Key>
+            <PropertyRef Name="IDDetail" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Volume" />
+            <PropertyRef Name="SellPrice" />
+            <PropertyRef Name="SellAmount" />
+            <PropertyRef Name="IDExpend" />
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="IDFaktur" />
+            <PropertyRef Name="IDSupplier" />
+            <PropertyRef Name="CurrencyBuy" />
+            <PropertyRef Name="CurrencySell" />
+            <PropertyRef Name="CurrencyBuyAmount" />
+            <PropertyRef Name="CurrencySellAmount" />
+            <PropertyRef Name="Created" />
+            <PropertyRef Name="BuyPrice" />
+            <PropertyRef Name="BuyAmount" />
+          </Key>
+          <Property Name="IDDetail" Type="Int64" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <Property Name="SellPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SellAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IDExpend" Type="Int64" Nullable="false" />
+          <Property Name="IDProduct" Type="Int32" Nullable="false" />
+          <Property Name="IDFaktur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDSupplier" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyBuy" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencySell" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyBuyAmount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencySellAmount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StrCreated" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BuyPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="BuyAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <ComplexType Name="SP_Expend_Result">
+          <Property Type="Int64" Name="IDExpend" Nullable="false" />
+          <Property Type="String" Name="IDFaktur" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDSupplier" Nullable="false" />
+          <Property Type="Int32" Name="IDCampaign" Nullable="false" />
+          <Property Type="Int32" Name="IDCustCompany" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="FakturCreated" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SupplierName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="SearchName" Nullable="false" MaxLength="153" />
+          <Property Type="String" Name="StrCreated" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SP_Purchase_Result">
+          <Property Type="Int64" Name="IDPurchase" Nullable="false" />
+          <Property Type="String" Name="IDFaktur" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDPartner" Nullable="false" />
+          <Property Type="Int32" Name="IDCampaign" Nullable="false" />
+          <Property Type="Int32" Name="IDCustCompany" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="FakturCreated" Nullable="false" Precision="23" />
+          <Property Type="String" Name="IDNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="SearchName" Nullable="false" MaxLength="306" />
+          <Property Type="String" Name="StrCreated" Nullable="true" MaxLength="30" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyCompanyModelStoreContainer" CdmEntityContainer="MyEntities">
+          <EntitySetMapping Name="tblSupplier">
+            <EntityTypeMapping TypeName="MyCompanyModel.tblSupplier">
+              <MappingFragment StoreEntitySet="tblSupplier">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSupplierContact">
+            <EntityTypeMapping TypeName="MyCompanyModel.tblSupplierContact">
+              <MappingFragment StoreEntitySet="tblSupplierContact">
+                <ScalarProperty Name="Info5" ColumnName="Info5" />
+                <ScalarProperty Name="Info4" ColumnName="Info4" />
+                <ScalarProperty Name="Info3" ColumnName="Info3" />
+                <ScalarProperty Name="Info2" ColumnName="Info2" />
+                <ScalarProperty Name="Info1" ColumnName="Info1" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+                <ScalarProperty Name="IDContact" ColumnName="IDContact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPartner">
+            <EntityTypeMapping TypeName="MyCompanyModel.tblPartner">
+              <MappingFragment StoreEntitySet="tblPartner">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Expend">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_Expend">
+              <MappingFragment StoreEntitySet="View_Expend">
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_UserAssignCampaign">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_UserAssignCampaign">
+              <MappingFragment StoreEntitySet="View_UserAssignCampaign">
+                <ScalarProperty Name="IconPath" ColumnName="IconPath" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_UserAssignMenu">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_UserAssignMenu">
+              <MappingFragment StoreEntitySet="View_UserAssignMenu">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RouterLink" ColumnName="RouterLink" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_PurchaseDetail">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_PurchaseDetail">
+              <MappingFragment StoreEntitySet="View_PurchaseDetail">
+                <ScalarProperty Name="CurrencyAmount" ColumnName="CurrencyAmount" />
+                <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+                <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inPurchaseDetail">
+            <EntityTypeMapping TypeName="MyCompanyModel.inPurchaseDetail">
+              <MappingFragment StoreEntitySet="inPurchaseDetail">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+                <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+                <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="MyCompanyModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CustCompanyID" ColumnName="CustCompanyID" />
+                <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+                <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Purchase">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_Purchase">
+              <MappingFragment StoreEntitySet="View_Purchase">
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Partner">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_Partner">
+              <MappingFragment StoreEntitySet="View_Partner">
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inExpend">
+            <EntityTypeMapping TypeName="MyCompanyModel.inExpend">
+              <MappingFragment StoreEntitySet="inExpend">
+                <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inPurchase">
+            <EntityTypeMapping TypeName="MyCompanyModel.inPurchase">
+              <MappingFragment StoreEntitySet="inPurchase">
+                <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Partner" FunctionName="MyCompanyModel.Store.SP_Partner">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyCompanyModel.SP_Partner_Result">
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tblProduct">
+            <EntityTypeMapping TypeName="MyCompanyModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inExpendDetail">
+            <EntityTypeMapping TypeName="MyCompanyModel.inExpendDetail">
+              <MappingFragment StoreEntitySet="inExpendDetail">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="SellAmount" ColumnName="SellAmount" />
+                <ScalarProperty Name="BuyAmount" ColumnName="BuyAmount" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+                <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+                <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Product">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_Product">
+              <MappingFragment StoreEntitySet="View_Product">
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Product" FunctionName="MyCompanyModel.Store.SP_Product">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyCompanyModel.SP_Product_Result">
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="View_ExpendDetail">
+            <EntityTypeMapping TypeName="MyCompanyModel.View_ExpendDetail">
+              <MappingFragment StoreEntitySet="View_ExpendDetail">
+                <ScalarProperty Name="BuyAmount" ColumnName="BuyAmount" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="StrCreated" ColumnName="StrCreated" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CurrencySellAmount" ColumnName="CurrencySellAmount" />
+                <ScalarProperty Name="CurrencyBuyAmount" ColumnName="CurrencyBuyAmount" />
+                <ScalarProperty Name="CurrencySell" ColumnName="CurrencySell" />
+                <ScalarProperty Name="CurrencyBuy" ColumnName="CurrencyBuy" />
+                <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
+                <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+                <ScalarProperty Name="SellAmount" ColumnName="SellAmount" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="IDDetail" ColumnName="IDDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Expend" FunctionName="MyCompanyModel.Store.SP_Expend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyCompanyModel.SP_Expend_Result">
+                <ScalarProperty Name="IDExpend" ColumnName="IDExpend" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+                <ScalarProperty Name="StrCreated" ColumnName="StrCreated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Purchase" FunctionName="MyCompanyModel.Store.SP_Purchase">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyCompanyModel.SP_Purchase_Result">
+                <ScalarProperty Name="IDPurchase" ColumnName="IDPurchase" />
+                <ScalarProperty Name="IDFaktur" ColumnName="IDFaktur" />
+                <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+                <ScalarProperty Name="IDCampaign" ColumnName="IDCampaign" />
+                <ScalarProperty Name="IDCustCompany" ColumnName="IDCustCompany" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="FakturCreated" ColumnName="FakturCreated" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+                <ScalarProperty Name="StrCreated" ColumnName="StrCreated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
