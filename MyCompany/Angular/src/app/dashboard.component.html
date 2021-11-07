@@ -1,0 +1,16 @@
+﻿<div class="col-lg-12 body-zero" [ngStyle]="{'display': isDisplayCampaign ? 'block' : 'none'}">
+    <div class="row" style="margin-top:30px">
+        <div class="col-lg-12">
+            <div *ngFor="let itemData of Campaigns" class="col-sm-6 col-md-3">
+                <a href="#" (click)="goToCampaign(itemData)">
+                    <div align="center" class="thumbnail">
+                        <img src="{{itemData.IconPath}}" class="home-image" />
+                        <div class="caption">
+                            <h4>{{itemData.CampaignName}}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

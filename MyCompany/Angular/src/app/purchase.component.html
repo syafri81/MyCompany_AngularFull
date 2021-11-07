@@ -1,0 +1,233 @@
+﻿<div class="row body-content">
+    <!--Loading-->
+    <div align="center" style="margin-top:10px" [ngStyle]="{'display': mdlIsLoading ? 'block' : 'none'}">
+        <img src="/Content/Icon/loading.gif" style="width:40px" />
+    </div>
+    <!--Loading End-->
+    <div class="pull-right">
+        <button type="button" (click)="newData()" class="btn btn-danger box_button" style="margin-top:19px" title="Add {{title}}"><i class="fa fa-cart-plus fa-3x"></i></button>
+    </div>
+    <h2>{{title}}</h2>
+    <hr />
+</div>
+<div class="row body-content">
+    <div class="col-lg-12 body-zero">
+        <div class="col-lg-6 body-zero">
+            <div class="input-group">
+                <!--<input type="text" ng-model="search.SupplierName" class="form-control box_button full-width">-->
+                <input type="text" #myInput [(ngModel)]="IDFaktur" (input)="filterIndex(myInput.value)" placeholder="Advanced search..." class="form-control box_button full-width">
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button"><i class="fa fa-search fa-2x"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row body-content margin-top-10">
+    <table class="table">
+        <thead class="thead-index">
+            <tr>
+                <th>#</th>
+                <th style="width:15%"><i class="fa fa-calculator"></i></th>
+                <th style="width:10%;text-align:right"><i class="fa fa-money"></i></th>
+                <th style="width:60%"><i class="fa fa-user-circle"></i></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="IndexData?.length == 0">
+                <td colspan="5"><label>No records.</label></td>
+            </tr>
+            <!--<tr ng-repeat="m in IndexData | filter:search">-->
+            <tr *ngFor="let itemData of IndexData; let idx = index">
+                <td>{{idx + 1}}</td>
+                <td>
+                    {{itemData.IDFaktur}}
+                </td>
+                <td style="text-align:right">{{itemData.Currency}}</td>
+                <td>
+                    {{itemData.IDNumber}} - {{itemData.Name}}                    
+                    <br />{{itemData.PhoneNumber}}
+                </td>
+                <td align="right">
+                    <button type="button" (click)="detail(itemData)" class="btn btn-cyan box_button btn-crud" title="detail"><i class="fa fa-list fa-2x"></i></button>
+                    <button type="button" (click)="confirmDelete(itemData)" class="btn btn-cyan box_button btn-crud" title="remove"><i class="fa fa-trash fa-2x"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Modal Detail-->
+<div class="modal fade" id="modalcontact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display': mdlIsPurchase ? 'block' : 'none', 'opacity': 1}">
+    <div class="modal-dialog modal-create">
+        <div class="modal-content box_button">
+            <div id="div_header_create" class="modal-header header_dialog">
+                <button type="button" id="btnCloseDialog" class="close btn btn-outline-blue" (click)="detailModal(false)" aria-label="Close"><i class="fa fa-remove fa-3x"></i></button>
+                <h4><i class="fa fa-address-card"></i> <label id="amountPurchase"> {{modalTitle}}</label></h4>
+            </div>
+            <div class="modal-body box_button body_save">
+                <div class="row body-content">
+                    <div class="pull-right">
+                        <button type="button" (click)="addDetail()" class="btn btn-danger box_button" [disabled]="detailToggle" [attr.title]="isAddDetail ? 'Add Detail' : 'Edit Detail'"><i [ngClass]="isAddDetail ? 'fa fa-cart-arrow-down fa-3x' : 'fa fa-edit fa-3x'"></i></button>
+                    </div>
+                    <div class="col-md-6 body-zero">
+                        <h5 *ngIf="DetailData?.length > 0" style="font-weight:600"><i class="fa fa-calculator"></i> {{selectedData.IDFaktur}}</h5>
+                        <div *ngIf="DetailData?.length == 0" class="form-group">
+                            <label class="control-label col-md-3 body-zero">No. Faktur</label>
+                            <div class="col-md-7">
+                                <input [(ngModel)]="selectedData.IDFaktur" readonly="readonly" class="form-control" style="max-width:80%;width:80%" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 body-zero">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 body-zero">Created</label>
+                            <div class="col-md-7">
+                                <!--<input type="date" [(ngModel)]="selectedData.CreatedDate | date:'yyyy-MM-dd'" class="form-control" style="max-width:140%;width:140%" />-->
+                                <input type="date" [value]="selectedData.Created | date:'yyyy-MM-dd'" (input)="selectedData.Created=parseDate($event.target.value)" class="form-control" style="max-width:140%;width:140%" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="DetailData?.length > 0" class="row body-content">
+                    <div class="pull-right">
+                        <h4 style="font-weight:600"><i class="fa fa-money"></i> {{selectedData.Currency}}</h4>
+                    </div>
+                    <h5 style="font-weight:600"><i class="fa fa-user-circle"></i> {{selectedData.SearchName}}</h5>
+                </div>
+                <div *ngIf="DetailData?.length == 0" class="row body-content">
+                    <div class="pull-right">
+                        <h4 style="font-weight:600"><i class="fa fa-money"></i> {{selectedData.Currency}}</h4>
+                    </div>
+                    <div class="col-md-9 body-zero">
+                        <label class="control-label col-md-2 body-zero">Partner</label>
+                        <div class="col-md-8">
+                            <input id="createID" type="hidden" [(ngModel)]="selectedData.IDPartner" />
+                            <input [(ngModel)]="selectedData.SearchName" (keyup)="searchPartner(selectedData.SearchName)" placeholder="Partner Name" class="form-control full-width" />
+                            <div>
+                                <ul *ngIf="flagPartner && AutoCompletePartner?.length > 0" class="dropdown-menu" style="display:block;width:94%;max-width:94%;margin:0px 14px 0px;height:auto">
+                                    <li *ngFor="let partner of AutoCompletePartner">
+                                        <a (click)="onselectPartner(partner)">{{partner.SearchName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="row body-content margin-top-10" [ngStyle]="{'display': mdlIsDetail ? 'block' : 'none'}">
+                    <!--<div class="form-horizontal">-->
+                    <div id="div_error_message" align="center" [ngStyle]="{'display': mdlIsMsg ? 'block' : 'none'}">
+                        <h5 class="alert alert-danger box_button" id="h5_error_message">{{errorMsg}}</h5>
+                    </div>
+                    <hr style="margin-top:5px" />
+                    <div class="row body-content" style="margin-bottom:5px">
+                        <div class="form-group">
+                            <label class="control-label col-md-2 body-zero">Product Name</label>
+                            <div class="col-md-10 body-zero">
+                                <input id="IDPurchase" type="hidden" [(ngModel)]="selectedDetail.IDPurchase" />
+                                <input id="IDProduct" type="hidden" [(ngModel)]="selectedDetail.IDProduct" />
+                                <input [(ngModel)]="selectedDetail.ProductName" (keyup)="searchProduct(selectedDetail.ProductName)" placeholder="Product Name" class="form-control full-width" />
+                                <div>
+                                    <ul *ngIf="flagProduct && AutoCompleteProduct?.length > 0" class="dropdown-menu" style="display:block;position:relative;width:100%;max-width:100%">
+                                        <li *ngFor="let product of AutoCompleteProduct">
+                                            <a (click)="onselectProduct(product)">{{product.ProductName}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                    <div class="row body-content" style="margin-bottom:20px">
+                        <label class="control-label col-md-2 body-zero">Volume</label>
+                        <div class="col-md-2 body-zero">
+                            <input type="number" [(ngModel)]="selectedDetail.Volume" placeholder="Volume" (blur)="makeAmountDetail()" class="form-control" style="max-width:90%;width:90%" />
+                        </div>
+                        <label class="control-label col-md-1">Price</label>
+                        <div class="col-md-3">
+                            <input type="number" [(ngModel)]="selectedDetail.Price" placeholder="0" readonly="readonly" class="form-control" style="max-width:80%;width:80%" />
+                        </div>
+                        <label class="control-label col-md-1">Amount</label>
+                        <div class="col-md-3" style="padding-right:0px">
+                            <input type="number" [(ngModel)]="selectedDetail.Amount" placeholder="0" readonly="readonly" class="form-control" style="max-width:100%;width:100%" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row body-content" style="overflow:auto;height:200px">
+                    <table class="table">
+                        <thead class="thead-index">
+                            <tr>
+                                <th>#</th>
+                                <th style="width:60%"><i class="fa fa-shopping-cart"></i></th>
+                                <th style="width:5%;text-align:right"><i class="fa fa-line-chart"></i></th>
+                                <th style="width:10%;text-align:right"><i class="fa fa-credit-card"></i></th>
+                                <th style="width:10%;text-align:right"><i class="fa fa-money"></i></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="DetailData?.length == 0">
+                                <td colspan="6"><label>No records.</label></td>
+                            </tr>
+                            <tr *ngFor="let itemData of DetailData; let idx = index">
+                                <td>{{idx + 1}}</td>
+                                <td>
+                                    {{itemData.ProductName}}
+                                    <br />{{itemData.Weight}} {{itemData.Size}}
+                                </td>
+                                <td style="text-align:right">{{itemData.Volume}}</td>
+                                <td style="text-align:right"><input type="hidden" [(ngModel)]="itemData.Price" /> {{(itemData.CurrencyPrice)}}</td>
+                                <td style="text-align:right"><input type="hidden" [(ngModel)]="itemData.Amount" /> {{itemData.CurrencyAmount}}</td>
+                                <td align="right">
+                                    <button type="button" (click)="editDetail(itemData)" class="btn btn-cyan box_button btn-crud" title="edit"><i class="fa fa-edit fa-2x"></i></button>
+                                    <button type="button" (click)="confirmDeleteDetail(itemData)" class="btn btn-cyan box_button btn-crud" title="remove"><i class="fa fa-trash fa-2x"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal Detail-->
+<!--Modal Delete-->
+<div class="modal fade" id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display': mdlIsDelete ? 'block' : 'none', 'opacity': 1}">
+    <div class="modal-dialog modal-delete">
+        <div class="modal-content box_button">
+            <div id="div_header" class="modal-header header_dialog">
+                <button type="button" id="btnCloseDialog" class="close btn btn-outline-blue" (click)="deleteModal(false)" aria-label="Close"><i class="fa fa-remove fa-3x"></i></button>
+                <h4>Remove Data</h4>
+            </div>
+            <div class="modal-body box_button body_save">
+                <div id="div_message" align="center">
+                    <h5 class="alert alert-danger box_button" id="h5_error_message">{{errorMsg}}</h5>
+                </div>
+            </div>
+            <div class="modal-footer margin-top-10">
+                <button type="button" id="btndelete" (click)="delete()" class="btn btn-danger box_button btn-med"><i class="fa fa-trash fa-3x"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal Delete-->
+<!--Modal Delete Detail-->
+<div class="modal fade" id="modaldeleteddetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display': mdlIsDeleteDetail ? 'block' : 'none', 'opacity': 1}">
+    <div class="modal-dialog modal-delete">
+        <div class="modal-content box_button">
+            <div id="div_header" class="modal-header header_dialog">
+                <button type="button" id="btnCloseDialog" class="close btn btn-outline-blue" (click)="deleteModalDetail(false)" aria-label="Close"><i class="fa fa-remove fa-3x"></i></button>
+                <h4>Remove Data</h4>
+            </div>
+            <div class="modal-body box_button body_save">
+                <div id="div_message" align="center">
+                    <h5 class="alert alert-danger box_button" id="h5_error_message">{{errorMsg}}</h5>
+                </div>
+            </div>
+            <div class="modal-footer margin-top-10">
+                <button type="button" id="btndelete" (click)="deleteDetail()" class="btn btn-danger box_button btn-med"><i class="fa fa-trash fa-3x"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal Delete-->

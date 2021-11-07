@@ -1,0 +1,41 @@
+﻿<!--Modal Create-->
+<form (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="modallogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display': mdlIsCreate ? 'block' : 'none', 'opacity': 1}">
+        <div class="modal-dialog" style="width:400px;padding-top:200px">
+            <div class="modal-content box_button">
+                <div id="div_header_create" class="modal-header header_dialog">
+                    <button type="button" id="btnCloseDialog" class="close btn btn-outline-blue" (click)="createModal(false)" aria-label="Close"><i class="fa fa-remove fa-3x"></i></button>
+                    <h4><i class="fa fa-users"></i> <label id="amountExpend"> {{modalTitle}}</label></h4>
+                </div>
+                <div class="modal-body box_button body_save">
+                    <div id="div_error_message" align="center" [ngStyle]="{'display': mdlIsMsg ? 'block' : 'none'}">
+                        <h5 class="alert alert-danger box_button" id="h5_error_message">{{errorMsg}}</h5>
+                    </div>
+                    <div align="center" id="div_body">
+                        <div class="row body-zero" style="margin-bottom:10px;">
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon alert-info box_button"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input [(ngModel)]="selectedData.UserName" name="UserName" type="text" placeholder="User name here ..." class="form-control box_button" style="width:100%;max-width:100%" autocomplete="off">
+                                </div><!-- /input-group -->
+                            </div>
+                        </div>
+                        <div class="row body-zero">
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon alert-info box_button"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input [(ngModel)]="selectedData.Password" name="Password" type="password" placeholder="Password here ..." class="form-control box_button" style="width:100%;max-width:100%">
+                                </div><!-- /input-group -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top:0px">
+                    <button type="submit" class="btn btn-info box_button"><i class="fa fa-save fa-3x"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--End Modal Create-->

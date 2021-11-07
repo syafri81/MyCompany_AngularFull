@@ -1,0 +1,28 @@
+<div class="col-lg-12 body-zero" *ngIf="isDisplayCampaign == true">
+    <router-outlet></router-outlet>
+</div>
+<div id="div_dashboardmenu" class="col-lg-12 body-zero" [ngStyle]="{'display': isDisplayHome ? 'block' : 'none'}">
+    <div id="menubar" class="col-lg-2 body-zero" align="center">
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a href="#">
+                    <img src="/Content/Icon/profile3.png" alt="profile" style="height:85px;padding-top:15px" />
+                    <br /><label style="padding-top:5px;">Syafriadi</label>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked" *ngFor="let itemData of assignMenu">            
+            <!--<li><a routerLink="/Home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="/UserManagement" routerLinkActive="active">Users</a></li>
+            <li><a routerLink="/Supplier" routerLinkActive="active">Supplier</a></li>
+            <li><a routerLink="/Partner" routerLinkActive="active">Partner</a></li>
+            <li><a routerLink="/Expend" routerLinkActive="active">Expenditure</a></li>-->
+            <li><a routerLink="{{itemData.RouterLink}}" routerLinkActive="active">{{itemData.MenuName}}</a></li>
+        </ul>
+    </div>
+    <div id="bodyplace" class="col-lg-10" style="padding-left:0px">
+        <div class="jumbotron" style="padding:5px 20px;background-color:#CFDFF3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
